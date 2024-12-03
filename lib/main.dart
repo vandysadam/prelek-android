@@ -29,9 +29,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_apps_app/config/routes/routes_name.dart';
-import 'package:mobile_apps_app/repository/auth/login_http_repository_auth.dart';
-import 'package:mobile_apps_app/repository/auth/login_mock_repository_auth.dart';
 import 'package:mobile_apps_app/repository/auth/login_repository.dart';
+import 'package:mobile_apps_app/repository/auth/user_login_repository.dart';
+import 'package:mobile_apps_app/repository/history/history_repository.dart';
+import 'package:mobile_apps_app/repository/payment/pay_repository.dart';
+import 'package:mobile_apps_app/repository/profile/get_user_byid_repository.dart';
+import 'package:mobile_apps_app/services/session/session_controller.dart';
 
 import 'config/routes/routes.dart';
 
@@ -60,5 +63,13 @@ class MyApp extends StatelessWidget {
 }
 
 void serviceLocator() {
-  getIt.registerLazySingleton<LoginRepository>(() => LoginHttpApiRepository());
+  getIt.registerLazySingleton<LoginRepository>(() => LoginRepositoryImpl());
+  getIt.registerLazySingleton<SessionController>(() => SessionController());
+  getIt.registerLazySingleton<UserLoginRepository>(
+      () => UserLoginRepositoryImpl());
+  getIt.registerLazySingleton<PayRepository>(() => PayHttpApiRepository());
+  getIt.registerLazySingleton<GetUserByidRepository>(
+      () => GetUserHttpApiRepository());
+  getIt.registerLazySingleton<HistoryTransactionRepository>(
+      () => HistoryTransactionHttpRepository());
 }

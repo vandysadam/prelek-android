@@ -18,15 +18,9 @@ class LoginButton extends StatelessWidget {
         if (state.postApiStatus == PostApiStatus.error) {
           FlushBarHelper.flushBarErrorMessage(
               state.message.toString(), context);
-          // ScaffoldMessenger.of(context)
-          //   ..hideCurrentSnackBar()
-          //   ..showSnackBar(
-          //     SnackBar(content: Text(state.message.toString())),
-          //   );
         }
 
         if (state.postApiStatus == PostApiStatus.success) {
-          // FlushBarHelper.flushBarSuccessMessage('Login Successfully', context);
           Navigator.pushNamed(context, RoutesName.homeScreen);
         }
 
@@ -39,16 +33,12 @@ class LoginButton extends StatelessWidget {
         }
       },
       child: BlocBuilder<LoginBloc, LoginStates>(
-        buildWhen: (previous, current) =>
-            current.postApiStatus != previous.postApiStatus,
         builder: (context, state) {
           return ElevatedButton(
             onPressed: () {
-              if (formKey.currentState!.validate()) {
+              if (formKey.currentState!.validate() &&
+                  state.password.length >= 6) {
                 context.read<LoginBloc>().add(LoginApi());
-                if (state.password.length < 6) {
-                  print('password not less than 6 character');
-                }
               }
             },
             child: state.postApiStatus == PostApiStatus.loading

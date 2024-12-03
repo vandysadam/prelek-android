@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_apps_app/bloc/login_bloc.dart';
+import 'package:mobile_apps_app/config/routes/routes_name.dart';
 import 'package:mobile_apps_app/main.dart';
+import 'package:mobile_apps_app/views/login/user_login_screen.dart';
 import 'package:mobile_apps_app/views/login/widget/email_input_widget.dart';
 import 'package:mobile_apps_app/views/login/widget/login_button.dart';
 import 'package:mobile_apps_app/views/login/widget/password_input_widget.dart';
@@ -23,11 +25,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _loginBloc = LoginBloc(loginRepository: getIt());
+    debugPrint('LoginScreen: initState');
+    _loginBloc =
+        LoginBloc(loginRepository: getIt(), userLoginRepository: getIt());
+    debugPrint('LoginScreen: _loginBloc initialized');
   }
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('LoginScreen: build');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -54,7 +60,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   LoginButton(
                     formKey: _formKey,
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                 ],
               )),
         ),

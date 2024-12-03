@@ -20,9 +20,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  @JsonKey(name: 'accessToken')
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get roles => throw _privateConstructorUsedError;
+  int get house_number => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
-  @JsonKey(name: 'error')
+  String get refreshToken => throw _privateConstructorUsedError;
   String get error => throw _privateConstructorUsedError;
 
   /// Serializes this UserModel to a JSON map.
@@ -41,8 +45,14 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'accessToken') String accessToken,
-      @JsonKey(name: 'error') String error});
+      {String id,
+      String name,
+      String email,
+      String roles,
+      int house_number,
+      String accessToken,
+      String refreshToken,
+      String error});
 }
 
 /// @nodoc
@@ -60,13 +70,43 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? email = null,
+    Object? roles = null,
+    Object? house_number = null,
     Object? accessToken = null,
+    Object? refreshToken = null,
     Object? error = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      roles: null == roles
+          ? _value.roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as String,
+      house_number: null == house_number
+          ? _value.house_number
+          : house_number // ignore: cast_nullable_to_non_nullable
+              as int,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
       error: null == error
           ? _value.error
@@ -85,8 +125,14 @@ abstract class _$$UserModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'accessToken') String accessToken,
-      @JsonKey(name: 'error') String error});
+      {String id,
+      String name,
+      String email,
+      String roles,
+      int house_number,
+      String accessToken,
+      String refreshToken,
+      String error});
 }
 
 /// @nodoc
@@ -102,13 +148,43 @@ class __$$UserModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? email = null,
+    Object? roles = null,
+    Object? house_number = null,
     Object? accessToken = null,
+    Object? refreshToken = null,
     Object? error = null,
   }) {
     return _then(_$UserModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      roles: null == roles
+          ? _value.roles
+          : roles // ignore: cast_nullable_to_non_nullable
+              as String,
+      house_number: null == house_number
+          ? _value.house_number
+          : house_number // ignore: cast_nullable_to_non_nullable
+              as int,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
+              as String,
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
       error: null == error
           ? _value.error
@@ -119,25 +195,50 @@ class __$$UserModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$UserModelImpl implements _UserModel {
   const _$UserModelImpl(
-      {@JsonKey(name: 'accessToken') this.accessToken = '',
-      @JsonKey(name: 'error') this.error = ''});
+      {this.id = '',
+      this.name = '',
+      this.email = '',
+      this.roles = '',
+      this.house_number = 0,
+      this.accessToken = '',
+      this.refreshToken = '',
+      this.error = ''});
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
 
   @override
-  @JsonKey(name: 'accessToken')
+  @JsonKey()
+  final String id;
+  @override
+  @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String roles;
+  @override
+  @JsonKey()
+  final int house_number;
+  @override
+  @JsonKey()
   final String accessToken;
   @override
-  @JsonKey(name: 'error')
+  @JsonKey()
+  final String refreshToken;
+  @override
+  @JsonKey()
   final String error;
 
   @override
   String toString() {
-    return 'UserModel(accessToken: $accessToken, error: $error)';
+    return 'UserModel(id: $id, name: $name, email: $email, roles: $roles, house_number: $house_number, accessToken: $accessToken, refreshToken: $refreshToken, error: $error)';
   }
 
   @override
@@ -145,14 +246,23 @@ class _$UserModelImpl implements _UserModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.roles, roles) || other.roles == roles) &&
+            (identical(other.house_number, house_number) ||
+                other.house_number == house_number) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken) &&
             (identical(other.error, error) || other.error == error));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, error);
+  int get hashCode => Object.hash(runtimeType, id, name, email, roles,
+      house_number, accessToken, refreshToken, error);
 
   /// Create a copy of UserModel
   /// with the given fields replaced by the non-null parameter values.
@@ -172,17 +282,33 @@ class _$UserModelImpl implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
-      {@JsonKey(name: 'accessToken') final String accessToken,
-      @JsonKey(name: 'error') final String error}) = _$UserModelImpl;
+      {final String id,
+      final String name,
+      final String email,
+      final String roles,
+      final int house_number,
+      final String accessToken,
+      final String refreshToken,
+      final String error}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
 
   @override
-  @JsonKey(name: 'accessToken')
+  String get id;
+  @override
+  String get name;
+  @override
+  String get email;
+  @override
+  String get roles;
+  @override
+  int get house_number;
+  @override
   String get accessToken;
   @override
-  @JsonKey(name: 'error')
+  String get refreshToken;
+  @override
   String get error;
 
   /// Create a copy of UserModel
